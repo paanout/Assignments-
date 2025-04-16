@@ -9,31 +9,13 @@ Why Use Recursion?
 
 Recursion shines when a problem naturally splits into smaller, similar problems. It makes code shorter, easier to understand, and often mirrors the logical structure of the task at hand.
 
-  Cool Example: Tower of Hanoi
+  a cool usage of recursion is to Sum a list
 
-The Tower of Hanoi is a classic puzzle involving three rods and disks of different sizes stacked on one rod. The goal is to move all the disks to another rod, following these rules:
-1. Move only one disk at a time.
-2. Never place a larger disk on top of a smaller one.
-
-This puzzle is perfect for recursion because solving it involves breaking it into smaller subproblems:
-- First, move the top `n-1` disks to a helper rod.
-- Then, move the largest disk to the target rod.
-- Finally, move the `n-1` disks from the helper rod to the target rod.
-
-  How Does the Code Work?
-
-Here’s a simplified explanation of the Python code:
 """
+def sum_list(lst):
+    if not lst:
+        return 0
+    return lst[0] + sum_list(lst[1:])
 
-def tower_of_hanoi(n, source, target, auxiliary):
-    if n == 1:  # Base case: Move one disk directly
-        print(f"Move disk 1 from {source} to {target}")
-        return
-    
-      # Recursive steps:
-    tower_of_hanoi(n - 1, source, auxiliary, target)  # Move n-1 disks to helper rod
-    print(f"Move disk {n} from {source} to {target}")  # Move the largest disk
-    tower_of_hanoi(n - 1, auxiliary, target, source)  # Move n-1 disks to target rod
-
-# Example usage:
-tower_of_hanoi(3, 'A', 'C', 'B')
+# Example
+print(sum_list([1, 2, 3, 4]))  # Output: 10
