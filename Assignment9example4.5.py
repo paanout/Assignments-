@@ -1,9 +1,21 @@
-def outer(a):
-    b = 2
-    def inner():
-        c = a + b
-        print("c =", c)
-    return inner
+def f(x):
+    def g():
+        x = 'abc'
+        print('x =', x)
 
-func = outer(3)
-func()
+    def h():
+        z = x
+        print('z =', z)
+
+    x = x + 1
+    print('x =', x)
+    h()
+    g()
+    print('x =', x)
+    return g
+
+x = 3
+z = f(x)
+print('x =', x)
+print('z =', z)
+z()
